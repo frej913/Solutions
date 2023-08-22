@@ -23,10 +23,10 @@ Del 2:
 
 Del 3:
     Skriv en funktion "many_squares" med en for-loop, som kalder square gentagne gange.
-    Brug denne funktion til at tegne flere firkanter af forskellig størrelse i forskellige positioner.
+    Brug denne funktion til at tegne flere firkanter af forskellig side_size i forskellige positioner.
     Funktionen skal have nogle parametre. F.eks:
         antal: hvor mange firkanter skal der tegnes?
-        størrelse: hvor store er firkanterne?
+        side_size: hvor store er firkanterne?
         afstand: hvor langt væk fra den sidste firkant er den næste firkant placeret?
 
 Del 4:
@@ -51,18 +51,49 @@ import turtle  # this imports a library called "turtle". A library is (someone e
 
 
 def visible(turtle_name):  # returns true if both the x- and y-value of the turtle's position are between -480 and 480
+    sq_size = 240
+    if -sq_size < turtle_name.position()[0] < sq_size and -sq_size < turtle_name.position()[1] < sq_size:
+        return 1
     # you will need this: x-value: turtle_name.position()[0]
     # and this:           y-value: turtle_name.position()[1]
     return 0
 
-def square(length):
-    tom = turtle.Turtle()  # almost just copy-paste
-    print(type(tom))
+def square(length, tom):
     for x in range(4):
         tom.forward(length)
         tom.left(90)
+        print(visible(tom))
+
+
+# Skriv en funktion "many_squares" med en for-loop, som kalder square gentagne gange.
+#     Brug denne funktion til at tegne flere firkanter af forskellig størrelse i forskellige positioner.
+#     Funktionen skal have nogle parametre. F.eks:
+#         antal: hvor mange firkanter skal der tegnes?
+#         størrelse: hvor store er firkanterne?
+#         afstand: hvor langt væk fra den sidste firkant er den næste firkant placeret?
+def many_squares(antal, side_size, afstand):
+    tom = turtle.Turtle()  # almost just copy-paste
+    print(type(tom))
+    tom.speed(1)  # fastest: 10, slowest: 1
+    for x in range(antal):
+        square(side_size, tom)
+        tom.penup()
+        tom.forward(afstand)  # kunne lave side_size + afstand så de ikke overlapper
+        tom.pendown()
     turtle.done()
 
+def spiral(addlength):
+    tom = turtle.Turtle()  # almost just copy-paste
+    print(type(tom))
+    tom.speed(10)  # fastest: 10, slowest: 1
+    length = addlength
+    while visible(tom) == 1:
+        tom.forward(length)
+        tom.left(90)
+        length = addlength + length
+        print(length)
+
+    turtle.done()
 
 def demo():  # demonstration of basic turtle commands
     tom = turtle.Turtle()  # create an object named tom of type Turtle
@@ -84,5 +115,26 @@ def demo():  # demonstration of basic turtle commands
     turtle.done()  # keeps the turtle window open after the program is done
 
 
-demo()
-#square(60)
+user_input = ""
+while user_input != "x":
+    print("""What do you want to do?
+    1) See the demo
+    2) Square
+    3) Many squares
+    4) Spiral
+    x) Stop program""")
+    user_input = input()
+    if user_input == "1":
+        demo()
+    elif user_input == "2":
+        print("Write the number of pixels you want the square to be:")
+        user_in2 = input()
+        many_squares(1, user_in2, 0)  # square no longer has a definition for tom 
+    elif user_input == "3":
+        many_squares(3, 40, 60)  # kunne bede om alle tre men er doven
+    elif user_input == "4":
+        spiral(5)
+    elif user_input == "x":
+        print("Ending program.")
+    else:
+        print("Unknown instruction please try again")
