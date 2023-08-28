@@ -95,6 +95,20 @@ def spiral(addlength):
 
     turtle.done()
 
+def star(points):
+    tom = turtle.Turtle()  # almost just copy-paste
+    print(type(tom))
+    tom.speed(3)
+    if points % 2 == 1:
+        angle = 180 - 180 / points
+    else:
+        angle = (points - 2) * 180 / points  # 360 / points
+    print(angle)
+    for x in range(points):
+        tom.forward(80)
+        tom.left(angle)
+    turtle.done()
+
 def demo():  # demonstration of basic turtle commands
     tom = turtle.Turtle()  # create an object named tom of type Turtle
     print(type(tom))
@@ -122,6 +136,7 @@ while user_input != "x":
     2) Square
     3) Many squares
     4) Spiral
+    5) Star
     x) Stop program""")
     user_input = input()
     if user_input == "1":
@@ -134,6 +149,10 @@ while user_input != "x":
         many_squares(3, 40, 60)  # kunne bede om alle tre men er doven
     elif user_input == "4":
         spiral(5)
+    elif user_input == "5":
+        print("How many points should the star. (en lige mængde bliver ikke god)")
+        input_points = input()
+        star(int(input_points))
     elif user_input == "x":
         print("Ending program.")
     else:
