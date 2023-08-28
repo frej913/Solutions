@@ -150,7 +150,7 @@ while user_input != "x":
     elif user_input == "4":
         spiral(5)
     elif user_input == "5":
-        print("How many points should the star. (en lige mængde bliver ikke god)")
+        print("How many points should the star have. (en lige mængde bliver ikke god)")
         input_points = input()
         star(int(input_points))
     elif user_input == "x":
