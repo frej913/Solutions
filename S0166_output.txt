@@ -1,0 +1,3 @@
+Anders 20
+Alex 4
+Uli 40

@@ -19,4 +19,13 @@ Når dit program er færdigt, skal du skubbe det til dit github-repository.
 Send derefter denne Teams-meddelelse til din lærer: <filename> færdig
 Fortsæt derefter med den næste fil.
 """
+myfile = "S0166_output.txt"
 
+with open(myfile) as file:  # when the program exits the with-block, the file is automatically closed
+    lines = file.readlines()  # reads the whole file at once
+line_number = 0
+for line in lines:
+    line_number += 1
+    this_line = line.split()
+    print(f"{this_line[0]} er {this_line[1]} år gammel.")
+print()
