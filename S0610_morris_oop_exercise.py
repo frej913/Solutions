@@ -97,10 +97,10 @@ class Miner:
 morris = Miner()
 # dead or alive - conditions for day activity - stop at day 1000
 for day in range(1000):  # 1000 days
-    if morris.isalive != True:
-        print("\n\t\t Morries R.I.P  \n")
-        break  # if he dies stop the count
-    else:
+    if morris.isalive:
         morris.choosetoday()
         print(day + 1)
+    else:
+        print("\n\t\t Morries R.I.P  \n")
+        break  # if he dies stop the count
 print(f"\n\tHe mined {morris.mined} times, slept {morris.slept} days, ate {morris.ate} meals, bought whisky {morris.shopped} times and drank {morris.drank} bottels of whisky")
