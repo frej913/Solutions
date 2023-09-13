@@ -39,20 +39,25 @@ class Character:
         self._current_health = max_health  # always start with full health
         self.attackpower = attackpower
 
-    # Tilføj en metode til udskrivning af klasseobjekter (__repr__).
     def __repr__(self):
         return f"Name: {self.name}.\tHP: {self._current_health}/{self.max_health}.\tAttack: {self.attackpower}"
 
-    # metode "hit", som reducerer _current_health af en anden karakter med attackpower.
     def hit(self, victim):
         print("hit you")
         victim.get_hit(self.attackpower)
 
-    # anden metode "get_hit", som reducerer _current_health for det objekt, som den tilhører, med attackpower.
     def get_hit(self, attacked):
+        print(f"{self.name} was hit")
         self._current_health -= attacked
-        print("was hit")
-    # 2. metode get_healed til klassen Character, som fungerer lige som get_hit.
+        if self._current_health < 0:
+            self._current_health = 0
+            print("death")  # maybe death method or bool for other checks,
+
+    def get_healed(self, healed):
+        print(f"{self.name} was healed")
+        self._current_health += healed
+        if self._current_health > self.max_health:
+            self._current_health = self.max_health
 
 
 class Healer(Character):
@@ -63,13 +68,16 @@ class Healer(Character):
     def __repr__(self):
         return f"Name: {self.name}.\tHP: {self._current_health}/{self.max_health}.\tHealing: {self.healpower}"
 
-    # metode "heal" til "Healer", som fungerer som "hit" men forbedrer sundheden med healpower.
+    def heal(self, target):
+        print("HEAL")
+        target.get_healed(self.healpower)
 
 
 warrior = Character("Bo", 80, 10)
 archer = Character("Ib", 65, 12)
+healer1 = Healer("Kim", 50, 11)
 
-people = [warrior, archer]
+people = [warrior, archer, healer1]
 for person in people:
     print(person)
 
@@ -79,6 +87,12 @@ for person in people:
     print(person)
 
 archer.hit(warrior)
+
+for person in people:
+    print(person)
+
+healer1.heal(warrior)
+healer1.heal(archer)
 
 for person in people:
     print(person)
