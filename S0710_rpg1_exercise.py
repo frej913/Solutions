@@ -45,7 +45,7 @@ class Character:
 
     # metode "hit", som reducerer _current_health af en anden karakter med attackpower.
     def hit(self, victim):
-        print("hit")
+        print("hit you")
         victim.get_hit(self.attackpower)
 
     # anden metode "get_hit", som reducerer _current_health for det objekt, som den tilhører, med attackpower.
