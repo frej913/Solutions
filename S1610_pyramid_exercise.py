@@ -48,8 +48,6 @@ def pyramid(lines):
             if start_line[y] + start_line[y+1] == x + 2:
                 current_line.insert(y+1+new_stuffs, x+2)
                 new_stuffs += 1
-            print(y, end=" ")
-        print()
         start_line = [i for i in current_line]
 
 
