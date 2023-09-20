@@ -38,16 +38,16 @@ Fortsæt derefter med den næste fil."""
 
 # I took a LOT of inspo from 'solution'
 def pyramid(lines):
-    start_line = [1, 1]
-    current_line = [i for i in start_line]
+    start_line = [1, 1]  # the line that is used and printed
+    current_line = [i for i in start_line]  # apply changes little at a time before 'official list' is updated
     for x in range(lines):
         print(f"Line {x+1}:", end=" ")
         print(start_line)
         new_stuffs = 0  # this was a total steal
         for y in range(len(start_line)-1):
-            if start_line[y] + start_line[y+1] == x + 2:
-                current_line.insert(y+1+new_stuffs, x+2)
-                new_stuffs += 1
+            if start_line[y] + start_line[y+1] == x + 2:  # is it the right number
+                current_line.insert(y+1+new_stuffs, x+2)  # if yes, add it
+                new_stuffs += 1  # you check in original list but insert in current list, so it needs an offset
         start_line = [i for i in current_line]
 
 
