@@ -14,7 +14,6 @@ def count_number(number):
         counter += row.count(number)
     return counter
 
-
 def inventory(max_row):
     for row_number in range(max_row):
         row = []

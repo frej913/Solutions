@@ -45,7 +45,7 @@ def count_numbers(number):
 
 def inventory2(lines):
     for line in range(lines):
-        print(line, end=": ")  # så man kan se hvad linje det er - kinda redundant
+        # print(line, end=": ")  # så man kan se hvad linje det er - kinda redundant - so i cut it
         row = []
         rows.append(row)
         column = 0
@@ -58,5 +58,5 @@ def inventory2(lines):
         print(row)
 
 
-rows = []  # could place at start of function
-inventory2(5)
+rows = []
+inventory2(10)
