@@ -25,7 +25,7 @@ frame_label.grid(row=0, column=0, padx=5, pady=5)
 inside_frame = tk.Frame(frame_label)  # currently useless, but also good to play around
 inside_frame.grid(row=0, column=0, padx=5, pady=5, sticky=tk.NS)
 # label
-label1 = tk.Label(inside_frame, text="Id", width=30, justify=tk.CENTER)  # the width is weird but what can you do
+label1 = tk.Label(inside_frame, text="id", width=30, justify=tk.CENTER)  # the width is weird but what can you do
 label1.grid(row=0, column=0, padx=padx_input_sets, pady=pady_input_sets)
 # input -ish
 entry1 = tk.Entry(inside_frame, width=5, justify=tk.CENTER)  # .        PADDING FOR ALL
